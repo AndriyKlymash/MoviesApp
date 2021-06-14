@@ -1,0 +1,33 @@
+/*nav ul{*/
+/*  list-style: none;*/
+/*}*/
+
+/*nav>ul>li{*/
+/*  float: left;*/
+/*}*/
+
+/*nav ul::after{*/
+/*  content: "";*/
+/*  display: block;*/
+/*  clear: both;*/
+/*}*/
+
+/*nav ul li a{*/
+/*  display: inline-block;*/
+/*  padding: 10px 20px;*/
+/*  color: silver;*/
+/*  width: 125px;*/
+/*}*/
+
+/*nav ul li a:hover{*/
+/*  background-color: silver;*/
+/*}*/
+
+/*nav ul ul{*/
+/*  display: none;*/
+/*  position: absolute;*/
+/*}*/
+
+/*nav ul li:hover ul{*/
+/*  display: block;*/
+/*}*/

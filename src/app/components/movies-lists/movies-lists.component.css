@@ -1,0 +1,14 @@
+h1{
+  margin: 15px;
+  text-align: center;
+}
+
+.wrap{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.pagination{
+  display: flex;
+  justify-content: center;
+}

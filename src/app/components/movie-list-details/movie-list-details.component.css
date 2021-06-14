@@ -1,0 +1,12 @@
+h1{
+  text-align: center;
+}
+
+.wrap{
+  margin: 10px;
+  display: flex;
+}
+
+.figure-caption{
+  padding: 10px;
+}
