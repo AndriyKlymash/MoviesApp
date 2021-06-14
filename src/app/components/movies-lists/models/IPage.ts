@@ -1,5 +1,6 @@
 export interface IPage {
   id: number;
+  total_pages:number;
   results: IMovie[];
 }
 

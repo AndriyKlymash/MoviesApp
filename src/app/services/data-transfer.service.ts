@@ -7,7 +7,12 @@ import {IMovie} from "../components/movies-lists/models/IPage";
 })
 export class DataTransferService {
 
-  movies=new BehaviorSubject<IMovie[]>([])
+  movies = new BehaviorSubject<IMovie[]>([])
+  pagination = new BehaviorSubject({
+    page:1,
+    total:0
+  })
+
 
   constructor() {
   }
