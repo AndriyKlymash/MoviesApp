@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {MovieListService} from "./service/movie-list.service";
 import {IMovie} from "./models/IPage";
+import {DataTransferService} from "../../services/data-transfer.service";
 
 @Component({
   selector: 'app-movies-lists',
@@ -9,13 +10,15 @@ import {IMovie} from "./models/IPage";
 })
 export class MoviesListsComponent implements OnInit {
 
-  films:IMovie[];
+  films: IMovie[];
 
-  constructor(private movieList: MovieListService) {
+  constructor(private movieList: MovieListService, private dataTransfer: DataTransferService) {
+    this.movieList.getMovies().subscribe(page => this.dataTransfer.movies.next(page.results));
   }
 
   ngOnInit(): void {
-    this.movieList.getMovies().subscribe( page => this.films = page.results);
+    this.dataTransfer.movies.subscribe((movies) => {
+      this.films = movies;
+    });
   }
-
 }

@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup} from "@angular/forms";
+import {MovieListService} from "../movies-lists/service/movie-list.service";
+import {DataTransferService} from "../../services/data-transfer.service";
 
 @Component({
   selector: 'app-header',
@@ -8,25 +9,20 @@ import {FormControl, FormGroup} from "@angular/forms";
 })
 export class HeaderComponent implements OnInit {
 
-  userSearch = {
-    searchText: 'SEARCH'
-  }
+  searchText: string;
 
-  // myForm1=new FormGroup({
-  //   genres:new FormControl('genre')
-  // })
 
-  constructor() {
+  constructor(private movieList: MovieListService, private dataTransfer:DataTransferService) {
   }
 
   ngOnInit(): void {
+    this.searchText = ''
   }
 
   search(myForm: HTMLFormElement) {
-    console.log(myForm.searcText.value)
-  }
-
-  find() {
-
+    console.log(myForm.searchText.value)
+    this.movieList.getBySearch(myForm.searchText.value).subscribe(response => {
+        this.dataTransfer.movies.next(response.results);
+    })
   }
 }
