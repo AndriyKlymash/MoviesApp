@@ -34,15 +34,18 @@ export class MoviesListsComponent implements OnInit {
   }
 
   back() {
-    const pagination = this.dataTransfer.pagination.getValue();
-    this.dataTransfer.pagination.next({page: pagination.page - 1, total: pagination.total})
+    const {page, total} = this.dataTransfer.pagination.getValue();
+    this.movieList.getMovies(page - 1).subscribe(response => {
+      this.dataTransfer.movies.next(response.results);
+      this.dataTransfer.pagination.next({total: response.total_pages, page: page - 1})
+    })
   }
 
   next() {
     const {page, total} = this.dataTransfer.pagination.getValue();
-    this.movieList.getMovies(page+1).subscribe(response => {
+    this.movieList.getMovies(page + 1).subscribe(response => {
       this.dataTransfer.movies.next(response.results);
-      this.dataTransfer.pagination.next({total: response.total_pages, page: page+1})
+      this.dataTransfer.pagination.next({total: response.total_pages, page: page + 1})
     });
   }
 }
